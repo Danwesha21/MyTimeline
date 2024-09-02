@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5ebeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.timeline-container {
+    max-width: 1000px;
+    width: 90%;
+    text-align: center;
+}
+
+.timeline {
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-entry {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+}
+
+.timeline-entry.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-entry img {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.timeline h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+.timeline p {
+    color: #326be6;
+    font-size: 1rem;
+}
+
+.timeline-indicators {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    position: relative;
+}
+
+.timeline-indicators::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #ccc;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.indicator {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+.indicator.active {
+    background-color: #182bfb;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background-color: #89bff8;
+}
+
+.indicator span {
+    position: absolute;
+    top: -30px; /* Adjust to move date text higher or lower */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: #666;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .timeline-entry img {
+        width: 100px;
+    }
+
+    .timeline h2 {
+        font-size: 1.5rem;
+    }
+
+    .timeline p {
+        font-size: 0.9rem;
+    }
+
+    .timeline-indicators {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-indicators::before {
+        width: 4px;
+        height: 100%;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-50%);
+    }
+
+    .indicator {
+        margin-bottom: 40px; /* Increased margin to accommodate the date text */
+    }
+
+    .indicator span {
+        top: -20px; /* Adjust position for smaller screens */
+    }
+}
